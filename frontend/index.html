@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Machine Hallucinations — Satellite Latent Walk</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+
+  <!-- Three.js via ESM importmap (no build step required) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Boot / generation overlay -->
+  <div id="overlay">
+    <div class="overlay-inner">
+      <h1>MACHINE&nbsp;HALLUCINATIONS</h1>
+      <p class="subtitle">latent memories of a satellite archive</p>
+      <div id="status">CONNECTING…</div>
+      <div id="progress"><div id="progress-fill"></div></div>
+      <div id="gen-controls" class="hidden">
+        <button id="btn-generate">⟳&nbsp;&nbsp;GENERATE A NEW WALK</button>
+        <span class="hint">renders on the GPU — a few minutes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent HUD -->
+  <div id="hud">
+    <div id="hud-title">MACHINE HALLUCINATIONS</div>
+    <div id="hud-stats">—</div>
+    <div id="hud-help">
+      [SPACE] pause &nbsp;·&nbsp; [1/2/3] density &nbsp;·&nbsp; [B] bloom &nbsp;·&nbsp;
+      [+/−] flow &nbsp;·&nbsp; [G] regenerate &nbsp;·&nbsp; [H] hide
+    </div>
+  </div>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

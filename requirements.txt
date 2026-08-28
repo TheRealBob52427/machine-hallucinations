@@ -1,0 +1,19 @@
+# --- Web stack -------------------------------------------------------------
+fastapi>=0.109,<1.0
+uvicorn[standard]>=0.27
+pydantic>=2.5
+pydantic-settings>=2.1
+
+# --- Generative engine -------------------------------------------------------
+# IMPORTANT: install the PyTorch build matching your CUDA first (see guide).
+torch>=2.1
+diffusers>=0.26          # provides the pretrained AutoencoderKL (VAE)
+safetensors>=0.4
+huggingface-hub>=0.20
+
+# --- Imaging -----------------------------------------------------------------
+Pillow>=10.0
+numpy>=1.24
+
+# --- Optional (mp4 export of the walk) ---------------------------------------
+# imageio[ffmpeg]>=2.33
