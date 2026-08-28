@@ -1,11 +1,11 @@
-name: Build and Publish Docker Image
+name: Build and Publish Docker Images
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
 
 jobs:
   build:
@@ -29,12 +29,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Lowercase the repository name
+        run: echo "REPO=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      - name: Build and push Backend image
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}/machine-hallucinations:latest
+          tags: ghcr.io/${{ env.REPO }}/machine-hallucinations-backend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -44,4 +48,6 @@ jobs:
           context: .
           file: Dockerfile.frontend
           push: true
-          tags: ghcr.io/${{ github.repository }}/machine-hallucinations-frontend:latest
+          tags: ghcr.io/${{ env.REPO }}/machine-hallucinations-frontend:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
