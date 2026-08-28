@@ -30,6 +30,16 @@ machine-hallucinations-main/
 - Python 3.8+
 - Modern Web Browser
 
+## Technology Stack
+- **Backend:** Python with FastAPI (for high performance and asynchronous handling).
+- **AI/Generative Engine:** PyTorch with Hugging Face `diffusers` (or a lightweight StyleGAN implementation) to generate latent space interpolations between the satellite images.
+- **Frontend:** HTML5, CSS3, and JavaScript utilizing Three.js or WebGL. The frontend must handle the fluid, particle-based rendering of the images.
+
+## Core Mechanics & Features
+- **Data Ingestion:** A script or endpoint to load a local folder of satellite images and preprocess them (resize, crop, normalize).
+- **The "Hallucination" (Backend):** Write a Python script that takes these images, projects them into a latent space, and generates a continuous "latent walk" (a seamless, morphing video loop or a stream of transitional frames).
+
+
 ## Installation & Setup
 
 ### 1. Backend Setup
