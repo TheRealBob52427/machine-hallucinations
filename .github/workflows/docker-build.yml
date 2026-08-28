@@ -37,3 +37,11 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/machine-hallucinations:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Build and push Frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile.frontend
+          push: true
+          tags: ghcr.io/${{ github.repository }}/machine-hallucinations-frontend:latest
